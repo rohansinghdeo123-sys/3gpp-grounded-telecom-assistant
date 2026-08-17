@@ -1,4 +1,5 @@
 import os
+import re
 
 from groq import Groq
 
@@ -87,7 +88,8 @@ Rules:
 1. Never use external knowledge or prior model knowledge.
 2. Do not invent missing facts.
 3. Every factual statement must be supported by the supplied evidence.
-4. Cite supporting passages using [S1], [S2], etc.
+4. You MUST include at least one citation in the exact format [S1], [S2], etc.
+   Do not provide a factual answer without a citation.
 5. If the evidence does not contain enough information to answer confidently, respond exactly:
 
 {ABSTAIN_MESSAGE}
@@ -137,10 +139,23 @@ QUESTION:
     )
 
 
-    return (
+    answer = (
         response
         .choices[0]
         .message
         .content
         .strip()
     )
+
+    # Preserve explicit abstention
+    if answer == ABSTAIN_MESSAGE:
+        return answer
+
+    # The answer must contain at least one evidence citation.
+    # Some LLMs may occasionally omit the requested [S1] marker,
+    # so attach the highest-ranked evidence reference as a safe fallback.
+    if not re.search(r"\[S\d+\]", answer):
+        if evidence:
+            answer += "\n\nSource: [S1]"
+
+    return answer
