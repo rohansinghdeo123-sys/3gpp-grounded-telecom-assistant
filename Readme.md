@@ -62,61 +62,61 @@ Potential future additions include TS 23.502 and other relevant 3GPP specificati
 
 Official 3GPP Document
 
-&#x20;       ↓
+       ↓
 
 Document Ingestion
 
-&#x20;       ↓
+      ↓
 
 Cleaning + Section Metadata
 
-&#x20;       ↓
+       ↓
 
 Section-Aware Chunking
 
-&#x20;       ↓
+       ↓
 
 Sentence Transformer Embeddings
 
-&#x20;       ↓
+       ↓
 
 Semantic Retrieval
 
-&#x20;       ↓
+       ↓
 
 CrossEncoder Reranking
 
-&#x20;       ↓
+       ↓
 
 Confidence Gate
 
-&#x20;       ↓
+       ↓
 
 Strong Evidence?
 
-&#x20;   ┌───────┴───────┐
+   ┌───────┴───────┐
 
-&#x20;   No              Yes
+   No              Yes
 
-&#x20;   ↓                ↓
+   ↓                ↓
 
-&#x20;Abstain        Grounded LLM
+Abstain        Grounded LLM
 
-&#x20;                    ↓
+                    ↓
 
-&#x20;                 Citations
+                 Citations
 
-&#x20;                    ↓
+                    ↓
 
-&#x20;                 Verifier
+                 Verifier
 
-&#x20;               ┌────┴────┐
+               ┌────┴────┐
 
-&#x20;              Fail      Pass
+              Fail      Pass
 
-&#x20;               ↓          ↓
+               ↓          ↓
 
-&#x20;            Abstain    Answer
+           Abstain    Answer
 
 ```
 
